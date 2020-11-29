@@ -1,11 +1,13 @@
-# Forecast cli app with rust
+# Forecast CLI app with rust
 
-the app was made for rust hackathon.
+The app was made for rust hackathon.
 
-## features
+## Features:
 
-- get updated weather information of your city.
+- Get updated weather information of your city.
 
-## commands
+## Commands:
 
-- `forecast` _{city_name}_
+- `cargo r` _{city_name}_
+### Note:
+Invalid input will be returned as _Error_.

@@ -114,6 +114,6 @@ fn main(){
     let wind_speed_kmh = miles_per_sec_to_kmh(sum_data.wind.speed);
 
     println!("\nCity: {}",sum_data.name);
-    println!("Weather: {}. Temperature: {}℃ . Feels Like: {}℃ . Wind speed: {}km/h.\n",sum_data.weather.details.description,temp_cel,feels_like_cel,wind_speed_kmh);
+    println!("Weather: {}. Temperature: {} ℃ . Feels Like: {} ℃ . Wind speed: {} km/h.\n",sum_data.weather.details.description,temp_cel.round(),feels_like_cel.round(),wind_speed_kmh.round());
 
 } 
