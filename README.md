@@ -8,6 +8,6 @@ The app was made for rust hackathon.
 
 ## Commands:
 
-- `cargo r` _{city_name}_
-### Note:
-Invalid input will be returned as _Error_.
+     `cargo r {city_name}`
+##### Note:
+##### Invalid input will be returned as _Error_.

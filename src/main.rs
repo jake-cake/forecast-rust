@@ -19,7 +19,8 @@ struct Cli {
     city: String,
 }
 
-#[derive(Serialize, Deserialize, Debug)]
+//structuring api info
+#[derive(Serialize, Deserialize, Debug)] 
 struct Forecast {
     coord: Coord,
     weather: Weather,
@@ -34,7 +35,7 @@ struct Forecast {
     id: i32,
     name: String,
     cod: i32,
-    // message: String,
+    //  message: String,
 }
 #[derive(Serialize, Deserialize, Debug)]
 struct Coord {
@@ -79,6 +80,7 @@ struct Sys {
     sunset: i32,
 }
 
+//converting api to json
 fn fetch_data(city:&str) -> Result<Forecast>{
     let url = format!("https://api.openweathermap.org/data/2.5/weather?q={}&appid=5f1959906bc793e97f7b81110c8a8d38", city);
     let res = reqwest::blocking::get(&url)?;
@@ -95,25 +97,24 @@ fn fetch_data(city:&str) -> Result<Forecast>{
     Ok(json_responce)
 }
 
-
+// kelvit to celcius converter
 fn kelvin_to_celcius(kel: f64) -> f64{
     kel - 273.15
 }
-
+// mps to kmh conventer
 fn miles_per_sec_to_kmh(inputspeed: f64) -> f64 {
     inputspeed * 3.6
 }
 
-
 fn main(){
+    // prepairing variables to run 
     let args = Cli::from_args();
     let city = &args.city[..];
     let sum_data = fetch_data(city).unwrap();
     let temp_cel = kelvin_to_celcius(sum_data.main.temp);
     let feels_like_cel = kelvin_to_celcius(sum_data.main.feels_like);
     let wind_speed_kmh = miles_per_sec_to_kmh(sum_data.wind.speed);
-
-    println!("\nCity: {}",sum_data.name);
-    println!("Weather: {}. Temperature: {} ℃ . Feels Like: {} ℃ . Wind speed: {} km/h.\n",sum_data.weather.details.description,temp_cel.round(),feels_like_cel.round(),wind_speed_kmh.round());
-
+    // printing out the result
+    println!("\nCity: {}.",sum_data.name);
+    println!("Weather: {}. \nTemperature: {} ℃ . \nFeels Like: {} ℃ . \nWind speed: {} km/h.\n",sum_data.weather.details.description,temp_cel.round(),feels_like_cel.round(),wind_speed_kmh.round());
 } 
