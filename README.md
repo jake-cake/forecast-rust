@@ -3,11 +3,10 @@
 The app was made for rust hackathon.
 
 ## Features:
-
 - Get updated weather information of your city.
 
 ## Commands:
 
-     `cargo r {city_name}`
+- ```cargo r {city_name}```
 ##### Note:
 ##### Invalid input will be returned as _Error_.
